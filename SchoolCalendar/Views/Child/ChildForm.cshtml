@@ -1,0 +1,27 @@
+﻿@model SchoolCalendar.ViewModels.ChildFormViewModel
+@{
+    ViewBag.Title = "ChildForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ChildForm</h2>
+
+@using (Html.BeginForm("Save", "Child"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Child.Name)
+        @Html.TextBoxFor(c => c.Child.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Child.BirthDate)
+        @Html.TextBoxFor(c => c.Child.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Child.Disability)
+        @Html.TextBoxFor(c => c.Child.Disability, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(c => c.Child.Id);
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+}

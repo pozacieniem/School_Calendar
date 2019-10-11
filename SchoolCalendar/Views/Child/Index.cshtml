@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SchoolCalendar.Models.CalendarModels.Child>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista dzieci</h2>
+<p>
+    @Html.ActionLink("Nowe Dziecko", "New", "Child", null, new { @class = "btn btn-primary" })
+</p>
+@if (!Model.Any())
+{
+    <p>Nie dodano jeszcze żadnego dziecka</p>
+}
+else
+{
+    <table id="children" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Imie i nazwisko</th>
+                <th>Niepełnosprawność</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var child in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(child.Name, "Edit", "Child", new { id = child.Id }, null)</td>
+                    <td>@child.Disability</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

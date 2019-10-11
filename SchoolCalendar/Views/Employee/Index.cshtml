@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SchoolCalendar.Models.CalendarModels.Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pracownicy</h2>
+
+<p>
+    @Html.ActionLink("Nowy pracownik", "New", "Employee", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (!Model.Any())
+{
+    <p>Nie dodano pracowników</p>
+}
+else
+{
+    <table id="employees" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Imie i nazwisko</th>
+                <th>Nazwa placówki</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(employee.Name, "Edit", "Employee", new { id = employee.Id }, null) </td>
+                    <td>@employee.School.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

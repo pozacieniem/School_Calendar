@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Style
+    {
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.css" rel="stylesheet" />
+}
+
+<h2>Index</h2>
+
+<div id="calendar">
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var events = [];
+            $.ajax({
+                type: "GET",
+                url: "/CalendarEvent/GetEvents",
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        events.push({
+                            title: v.Subject,
+                            description: v.Description,
+                            start: moment(v.Start).format("YYYY-MM-DD hh:mm:ss"),
+                            //start: "2019-10-03",
+                            end: v.End != null ? moment(v.End).format("YYYY-MM-DD hh:mm:ss") : null,
+                            color: v.Color,
+                            allDay: v.IsFullDay
+                        });
+                    })
+                    console.log(events);
+                    GenerateCalendar(events);
+                },
+                error: function (error) {
+                    alert('failed');
+                }
+
+            })
+
+            function GenerateCalendar(events) {
+                //$('#calendar').fullCalendar('destroy');
+                console.log(events);
+                var calendarEl = document.getElementById("calendar");
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    plugins: ['dayGrid'],
+                    contentHeight: 400,
+                    defaultDate: new Date(),
+                    timeFormat: 'h(:mm)a',
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month, basicWeek, basicDay, agenda'
+                    },
+                    eventLimit: true,
+                    eventColor: '#378006',
+                    events: events
+                    //[
+                    //    {
+                    //        title: 'All Day Event',
+                    //        start: '2019-09-01'
+                    //    },
+                    //    {
+                    //        title: 'Long Event',
+                    //        start: '2019-09-07',
+                    //        end: '2019-09-10'
+                    //    }]
+                });
+                calendar.render();
+            }
+        });
+    </script>
+
+}

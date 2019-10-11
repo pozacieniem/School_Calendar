@@ -1,0 +1,20 @@
+﻿@model IEnumerable<SchoolCalendar.Models.CalendarModels.School>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Informacje</h1>
+<p>
+    @Html.ActionLink("Nowa Placówka", "New", "School", null, new { @class = "btn btn-primary" })
+</p>
+
+@foreach (var school in Model)
+{
+    <h2>@Html.ActionLink(school.Name, "Edit", "School", new { id = school.Id }, null)</h2>
+    <h2>@school.Name</h2>
+    <h3>ul. @school.Street</h3>
+    <h3>@school.PostCode, @school.City</h3>
+    <h3>NIP @school.NIP</h3>
+    <h2>----------------- </h2>
+}

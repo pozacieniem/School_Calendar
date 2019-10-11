@@ -1,0 +1,34 @@
+﻿@model SchoolCalendar.Models.CalendarModels.School
+@{
+    ViewBag.Title = "SchoolForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SchoolForm</h2>
+
+@using (Html.BeginForm("Save", "School"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Street)
+        @Html.TextBoxFor(c => c.Street, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.PostCode)
+        @Html.TextBoxFor(c => c.PostCode, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.City)
+        @Html.TextBoxFor(c => c.City, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.NIP)
+        @Html.TextBoxFor(c => c.NIP, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(c => c.Id)
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+}
