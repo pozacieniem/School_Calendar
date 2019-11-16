@@ -18,9 +18,9 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Employee.JobPosition.JobPositionName)
-        @Html.DropDownListFor(m => m.Employee.JobPosition.JobPositionName, new SelectList(Model.JobPositions, "Id", "JobPositionName"), "", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Employee.JobPositionId, new SelectList(Model.JobPositions, "Id", "JobPositionName"), "", new { @class = "form-control" })
     </div>
 
     @Html.HiddenFor(c => c.Employee.Id)
-    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <button type="submit" class="btn btn-primary">Zapisz</button> @Html.ActionLink("Powrót", "Index", "Employee", null, new { @class = "btn btn-primary" })
 }

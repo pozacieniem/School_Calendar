@@ -73,7 +73,7 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
                 var employeeInDb = _context.Employees.Single(e => e.Id == employee.Id);
                 employeeInDb.Name = employee.Name;
                 employeeInDb.SchoolId = employee.SchoolId;
-                employeeInDb.JobPosition = employee.JobPosition;
+                employeeInDb.JobPositionId = employee.JobPositionId;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Employee");

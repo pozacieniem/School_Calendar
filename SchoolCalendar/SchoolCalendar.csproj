@@ -173,6 +173,7 @@
     <Compile Include="Controllers\SchoolCalendarControllers\CalendarEventController.cs" />
     <Compile Include="Controllers\SchoolCalendarControllers\ChildController.cs" />
     <Compile Include="Controllers\SchoolCalendarControllers\EmployeeController.cs" />
+    <Compile Include="Controllers\SchoolCalendarControllers\JobPositionController.cs" />
     <Compile Include="Controllers\SchoolCalendarControllers\SchoolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -216,6 +217,10 @@
     <Compile Include="Migrations\201910110906407_ModelChange.cs" />
     <Compile Include="Migrations\201910110906407_ModelChange.Designer.cs">
       <DependentUpon>201910110906407_ModelChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911041642146_JobPositionIdAddedToEmployee.cs" />
+    <Compile Include="Migrations\201911041642146_JobPositionIdAddedToEmployee.Designer.cs">
+      <DependentUpon>201911041642146_JobPositionIdAddedToEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -348,6 +353,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\DataTables\css\mixins.scss" />
@@ -473,6 +480,7 @@
     <Content Include="Views\School\Index.cshtml" />
     <Content Include="Views\CalendarEvent\Index.cshtml" />
     <Content Include="Views\School\SchoolForm.cshtml" />
+    <Content Include="Views\JobPosition\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -520,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910110906407_ModelChange.resx">
       <DependentUpon>201910110906407_ModelChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911041642146_JobPositionIdAddedToEmployee.resx">
+      <DependentUpon>201911041642146_JobPositionIdAddedToEmployee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

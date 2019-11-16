@@ -23,5 +23,5 @@
     </div>
 
     @Html.HiddenFor(c => c.Child.Id);
-    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <button type="submit" class="btn btn-primary">Zapisz</button> @Html.ActionLink("Powrót", "Index", "Child", null, new { @class = "btn btn-primary" })
 }

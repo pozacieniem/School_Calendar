@@ -2,6 +2,7 @@
 using SchoolCalendar.Models.CalendarModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -70,5 +71,14 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
 
             return View("SchoolForm", school);
         }
+
+        //public ActionResult Delete(School school)
+        //{
+        //    _context.Schools.Remove(school);
+        //        _context.SaveChanges();
+
+        //    return RedirectToAction("Index", "School");
+        //}
+        //}
     }
 }

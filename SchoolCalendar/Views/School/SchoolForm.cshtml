@@ -30,5 +30,6 @@
         @Html.TextBoxFor(c => c.NIP, new { @class = "form-control" })
     </div>
     @Html.HiddenFor(c => c.Id)
-    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <button type="submit" class="btn btn-primary">Zapisz</button> @Html.ActionLink("Powrót", "Index", "School", null, new { @class = "btn btn-primary" })
+    //@Html.ActionLink("Usuń", "Delete", "School", null, new { @class = "btn btn-primary" })
 }

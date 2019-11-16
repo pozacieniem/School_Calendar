@@ -15,7 +15,7 @@ namespace SchoolCalendar.Models.CalendarModels
         [Display(Name = "Imię")]
         public string Name { get; set; }
 
-        //public int JobPositionId { get; set; }
+        public int JobPositionId { get; set; }
 
         public JobPosition JobPosition { get; set; }
 
