@@ -18,8 +18,10 @@ else
         <thead>
             <tr>
                 <th>Imie i nazwisko</th>
-                <th>Niepełnosprawność</th>
-                <th>Usuń</th>
+                <th style="text-align:center">Niepełnosprawność</th>
+                <th style="text-align:center">Numer orzeczenia</th>
+                <th style="text-align:center">Numer opinii</th>
+                <th style="text-align:center">Usuń</th>
             </tr>
         </thead>
         <tbody>
@@ -27,35 +29,36 @@ else
             {
                 <tr>
                     <td>@Html.ActionLink(child.Name, "Edit", "Child", new { id = child.Id }, null)</td>
-                    <td>@child.Disability</td>
-                    <td>
-                        <button data-child-id="@child.Id" class="btn-link js-delete">Usuń</button>
-                    </td>
+                    <td align="center">@child.Disability</td>
+                    <td align="center">@child.DecisionNumber</td>
+                    <td align="center">@child.OpinionNumber</td>
+                    <td align="center">@Html.ActionLink("Usuń", "Delete", "Child", new { id = child.Id }, null)</td>
+                    @*<button data-child-id="@child.Id" class="btn-link js-delete">Usuń</button>*@
                 </tr>
             }
         </tbody>
     </table>
 }
-@section scripts
-{
-    <script>
-        $(document).ready(function () {
-            $("#children .js-delete").on("click", function () {
-                var button = $(this);
-                bootbox.confirm("Potwierdź operację usówania", function (result) {
-                    if (result{
-                        $ajax({
-                            url: "/child/" + button.attr("data-child-id"),
-                            method: "DELETE",
-                            success: function () {
-                                button.parents("tr").remove();
-                            }
-                        });
-                    }
-                })
+@*@section scripts
+    {
+        <script>
+            $(document).ready(function () {
+                $("#children .js-delete").on("click", function () {
+                    var button = $(this);
+                    bootbox.confirm("Potwierdź operację usówania", function (result) {
+                        if (result{
+                            $ajax({
+                                url: "/child/" + button.attr("data-child-id"),
+                                method: "Delete",
+                                success: function () {
+                                    button.parents("tr").remove();
+                                }
+                            });
+                        }
+                    })
 
+                });
             });
-        });
-    </script>
+        </script>
 
-}
+    }*@

@@ -20,7 +20,9 @@ else
         <thead>
             <tr>
                 <th>Imie i nazwisko</th>
-                <th>Nazwa placówki</th>
+                <th style="text-align:center">Nazwa stanowiska</th>
+                <th style="text-align:center">Nazwa placówki</th>
+                <th style="text-align:center">Usuń</th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +30,9 @@ else
             {
                 <tr>
                     <td>@Html.ActionLink(employee.Name, "Edit", "Employee", new { id = employee.Id }, null) </td>
-                    <td>@employee.School.Name</td>
+                    <td align="center">@employee.JobPosition.JobPositionName</td>
+                    <td align="center">@employee.School.Name</td>
+                    <td align="center">@Html.ActionLink("Usuń", "Delete", "Employee", new { id = employee.Id }, null) </td>
                 </tr>
             }
         </tbody>

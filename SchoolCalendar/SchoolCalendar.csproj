@@ -222,6 +222,14 @@
     <Compile Include="Migrations\201911041642146_JobPositionIdAddedToEmployee.Designer.cs">
       <DependentUpon>201911041642146_JobPositionIdAddedToEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911181751257_SchoolIdAddedToChildTable.cs" />
+    <Compile Include="Migrations\201911181751257_SchoolIdAddedToChildTable.Designer.cs">
+      <DependentUpon>201911181751257_SchoolIdAddedToChildTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911181857582_PropAddedToChildTable.cs" />
+    <Compile Include="Migrations\201911181857582_PropAddedToChildTable.Designer.cs">
+      <DependentUpon>201911181857582_PropAddedToChildTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalendarModels\Child.cs" />
@@ -481,6 +489,7 @@
     <Content Include="Views\CalendarEvent\Index.cshtml" />
     <Content Include="Views\School\SchoolForm.cshtml" />
     <Content Include="Views\JobPosition\Index.cshtml" />
+    <Content Include="Views\JobPosition\JobPositionForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -531,6 +540,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911041642146_JobPositionIdAddedToEmployee.resx">
       <DependentUpon>201911041642146_JobPositionIdAddedToEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911181751257_SchoolIdAddedToChildTable.resx">
+      <DependentUpon>201911181751257_SchoolIdAddedToChildTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911181857582_PropAddedToChildTable.resx">
+      <DependentUpon>201911181857582_PropAddedToChildTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

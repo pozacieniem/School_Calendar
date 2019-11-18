@@ -1,9 +1,6 @@
 ﻿using SchoolCalendar.Models;
 using SchoolCalendar.Models.CalendarModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchoolCalendar.Controllers.SchoolCalendarControllers
@@ -32,7 +29,32 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
         public ActionResult New()
         {
             var jobPosition = new JobPosition();
-            return View();
+
+            return View("JobPositionForm", jobPosition);
+        }
+
+        [HttpPost]
+        public ActionResult Save(JobPosition jobPosition)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("JobPositionForm", jobPosition);
+            }
+
+            if (jobPosition.Id == 0)
+            {
+                _context.JobPositions.Add(jobPosition);
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index", "JobPosition");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var jobPosition = _context.JobPositions.SingleOrDefault(j => j.Id == id);
+            _context.JobPositions.Remove(jobPosition);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "JobPosition");
         }
     }
 }

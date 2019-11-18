@@ -1,10 +1,6 @@
 ﻿using SchoolCalendar.Models;
 using SchoolCalendar.Models.CalendarModels;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SchoolCalendar.Controllers.SchoolCalendarControllers
@@ -67,18 +63,19 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
             var school = _context.Schools.SingleOrDefault(s => s.Id == id);
 
             if (school == null)
+            {
                 return HttpNotFound();
+            }
 
             return View("SchoolForm", school);
         }
 
-        //public ActionResult Delete(School school)
-        //{
-        //    _context.Schools.Remove(school);
-        //        _context.SaveChanges();
-
-        //    return RedirectToAction("Index", "School");
-        //}
-        //}
+        public ActionResult Delete(int id)
+        {
+            var school = _context.Schools.SingleOrDefault(s => s.Id == id);
+            _context.Schools.Remove(school);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "School");
+        }
     }
 }

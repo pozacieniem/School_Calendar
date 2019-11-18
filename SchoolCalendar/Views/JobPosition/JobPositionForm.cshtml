@@ -1,0 +1,15 @@
+﻿@model SchoolCalendar.Models.CalendarModels.JobPosition
+@{
+    ViewBag.Title = "JobPositionForm";
+}
+
+<h2>JobPositionForm</h2>
+@using (Html.BeginForm("Save", "JobPosition"))
+{
+    <div class="form-group">
+        @Html.LabelFor(j => j.JobPositionName);
+        @Html.TextBoxFor(j => j.JobPositionName, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(j => j.Id);
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+}

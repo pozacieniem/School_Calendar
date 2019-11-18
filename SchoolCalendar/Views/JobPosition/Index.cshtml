@@ -4,9 +4,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-@Html.ActionLink
-@foreach (var item in Model)
+<h2>Stanowiska pracy i specjalizacje</h2>
+<p>
+    @Html.ActionLink("Nowe stanowisko", "New", "JobPosition", null, new { @class = "btn btn-primary " })
+</p>
+@if (!Model.Any())
 {
-    <h2>@item.JobPositionName</h2>
+    <p>Nie dodano jeszcze żadnego stanowiska pracy</p>
+}
+else
+{
+    <table id="jobPosition" class=" table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nazwa stanowiska</th>
+                <th style="text-align:center">Usuń</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var jobPosition in Model)
+            {
+                <tr>
+                    <td>@jobPosition.JobPositionName</td>
+                    <td align="center">@Html.ActionLink("Usuń", "Delete", "JobPosition", new { id = jobPosition.Id }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 }

@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Informacje</h1>
+<h2>Informacje</h2>
 <p>
     @Html.ActionLink("Nowa Placówka", "New", "School", null, new { @class = "btn btn-primary" })
 </p>
@@ -14,5 +14,5 @@
     <h3>ul. @school.Street</h3>
     <h3>@school.PostCode, @school.City</h3>
     <h3>NIP @school.NIP</h3>
-    <h2>----------------- </h2>
+    @*<h4>@Html.ActionLink("Usuń", "Delete", "School", new { id = school.Id }, new { @class = "btn btn-primary" }) </h4>*@
 }

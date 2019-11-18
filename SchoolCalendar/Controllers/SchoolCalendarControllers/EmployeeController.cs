@@ -1,12 +1,9 @@
 ﻿using SchoolCalendar.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Data.Entity;
 using SchoolCalendar.Models.CalendarModels;
 using SchoolCalendar.ViewModels;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace SchoolCalendar.Controllers.SchoolCalendarControllers
 {
@@ -54,7 +51,9 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
             };
 
             if (employee == null)
+            {
                 return HttpNotFound();
+            }
 
             return View("EmployeeForm", viewModel);
         }
@@ -67,7 +66,9 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
             }
 
             if (employee.Id == 0)
+            {
                 _context.Employees.Add(employee);
+            }
             else
             {
                 var employeeInDb = _context.Employees.Single(e => e.Id == employee.Id);
@@ -77,6 +78,15 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Employee");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var employee = _context.Employees.SingleOrDefault(e => e.Id == id);
+            _context.Employees.Remove(employee);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Employee");
+            //return RedirectToAction
         }
     }
 }
