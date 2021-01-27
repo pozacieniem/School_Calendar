@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SchoolCalendar.Models.CalendarModels
 {
@@ -9,6 +6,7 @@ namespace SchoolCalendar.Models.CalendarModels
     {
         public int Id { get; set; }
         public string Subject { get; set; }
+        public Employee Teacher { get; set; }
         public string Description { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }

@@ -8,11 +8,29 @@
 <p>
     @Html.ActionLink("Nowa Placówka", "New", "School", null, new { @class = "btn btn-primary" })
 </p>
-@foreach (var school in Model)
+@if (!Model.Any())
 {
-    <h2>@Html.ActionLink(school.Name, "Edit", "School", new { id = school.Id }, null)</h2>
-    <h3>ul. @school.Street</h3>
-    <h3>@school.PostCode, @school.City</h3>
-    <h3>NIP @school.NIP</h3>
-    @*<h4>@Html.ActionLink("Usuń", "Delete", "School", new { id = school.Id }, new { @class = "btn btn-primary" }) </h4>*@
+    <p>Nie dodano placówki</p>
+
+}
+else
+{
+    <table id="groups" class="table table-bordered">
+        <tbody>
+            @foreach (var school in Model)
+            {
+                <tr>
+                    <td><h3>@Html.ActionLink(school.Name, "Edit", "School", new { id = school.Id }, null)</h3></td>
+                    <td><h3>ul. @school.Street</h3></td>
+                    <td><h3>@school.PostCode, @school.City</h3></td>
+                    <td><h3>NIP @school.NIP</h3></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @*@foreach (var school in Model)
+        {
+
+            @*<h4>@Html.ActionLink("Usuń", "Delete", "School", new { id = school.Id }, new { @class = "btn btn-primary" }) </h4>}*@
+
 }

@@ -22,5 +22,6 @@
     </div>
 
     @Html.HiddenFor(c => c.Employee.Id)
-    <button type="submit" class="btn btn-primary">Zapisz</button> @Html.ActionLink("Powrót", "Index", "Employee", null, new { @class = "btn btn-primary" })
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    @Html.ActionLink("Powrót", "Index", "Employee", null, new { @class = "btn btn-primary" })
 }

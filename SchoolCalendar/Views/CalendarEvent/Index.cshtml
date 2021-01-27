@@ -10,13 +10,29 @@
 
 <h2>Index</h2>
 
-<div id="calendar">
+<div id="calendar"></div>
+<div id="myModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+            </div>
+            <div class="modal-body">
+                <p id="pDetails"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.js"></script>
+
     <script>
         $(document).ready(function () {
 
@@ -61,7 +77,19 @@
                     },
                     eventLimit: true,
                     eventColor: '#378006',
-                    events: events
+                    events: events,
+                    //var Myevent = document.getElementById("myModel").text(calEvent.title)
+                    eventClick: function (calEvent, jsEvent, view) {
+                        $('#myModel #eventTitle').text(calEvent.title);
+                        var $description = $('<div />');
+                        $description.append($('<p />').html('<b>Start:</b>' + calEvent.start.format("YYYY-MM-DD hh:mm:ss")));
+                        if (calEvent.end != null) {
+                            $description.append($('<p />').html('<b>End:</b>' + calEvent.end.format("YYYY-MM-DD hh:mm:ss")));
+                        }
+                        $description.append($('</p>').html('<b>End:</b>' + calEvent.description));
+                        $('#myModel #pDetails').empty().html($description);
+                        $('#myModel').modal();
+                    }
                     //[
                     //    {
                     //        title: 'All Day Event',
@@ -73,6 +101,8 @@
                     //        end: '2019-09-10'
                     //    }]
                 });
+                
+
                 calendar.render();
             }
         });

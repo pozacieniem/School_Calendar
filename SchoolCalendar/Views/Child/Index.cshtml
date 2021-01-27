@@ -21,6 +21,8 @@ else
                 <th style="text-align:center">Niepełnosprawność</th>
                 <th style="text-align:center">Numer orzeczenia</th>
                 <th style="text-align:center">Numer opinii</th>
+                <th style="text-align:center">Placówka</th>
+                <th style="text-align:center">Grupa</th>
                 <th style="text-align:center">Usuń</th>
             </tr>
         </thead>
@@ -32,6 +34,8 @@ else
                     <td align="center">@child.Disability</td>
                     <td align="center">@child.DecisionNumber</td>
                     <td align="center">@child.OpinionNumber</td>
+                    <td align="center">@child.School.Name</td>
+                    <td align="center">@child.Group.GroupName</td>
                     <td align="center">@Html.ActionLink("Usuń", "Delete", "Child", new { id = child.Id }, null)</td>
                     @*<button data-child-id="@child.Id" class="btn-link js-delete">Usuń</button>*@
                 </tr>

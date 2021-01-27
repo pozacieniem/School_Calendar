@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace SchoolCalendar.Models.CalendarModels
 {
@@ -36,5 +33,6 @@ namespace SchoolCalendar.Models.CalendarModels
 
         public IList<Employee> Employees { get; set; }
         public IList<Child> Children { get; set; }
+        public IList<Group> Groups { get; set; }
     }
 }

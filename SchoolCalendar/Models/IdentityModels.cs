@@ -1,9 +1,9 @@
-﻿using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SchoolCalendar.Models.CalendarModels;
+using System.Data.Entity;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace SchoolCalendar.Models
 {
@@ -27,6 +27,7 @@ namespace SchoolCalendar.Models
         public DbSet<Child> Children { get; set; }
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
         public DbSet<EmployeeAvailability> EmployeeAvailabilities { get; set; }
+        public DbSet<Group> Groups { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

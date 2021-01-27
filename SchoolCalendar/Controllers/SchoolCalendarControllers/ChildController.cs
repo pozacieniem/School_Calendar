@@ -1,6 +1,7 @@
 ﻿using SchoolCalendar.Models;
 using SchoolCalendar.Models.CalendarModels;
 using SchoolCalendar.ViewModels;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -23,17 +24,19 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
         // GET: Child
         public ActionResult Index()
         {
-            var children = _context.Children.ToList();
+            var children = _context.Children.Include(g => g.Group).Include(s => s.School).ToList();
             return View("Index", children);
         }
 
         public ActionResult New()
         {
             var schools = _context.Schools.ToList();
+            var groups = _context.Groups.ToList();
             var viewModel = new ChildFormViewModel
             {
                 Child = new Child(),
-                Schools = schools
+                Schools = schools,
+                Groups = groups,
             };
             return View("ChildForm", viewModel);
         }
@@ -56,6 +59,10 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
                 childInDb.Name = child.Name;
                 childInDb.BirthDate = child.BirthDate;
                 childInDb.Disability = child.Disability;
+                childInDb.DecisionNumber = child.DecisionNumber;
+                childInDb.OpinionNumber = child.OpinionNumber;
+                childInDb.SchoolId = child.SchoolId;
+                childInDb.GroupId = child.GroupId;
             }
             _context.SaveChanges();
 
@@ -68,7 +75,8 @@ namespace SchoolCalendar.Controllers.SchoolCalendarControllers
             var viewModel = new ChildFormViewModel
             {
                 Child = child,
-                Schools = _context.Schools.ToList()
+                Schools = _context.Schools.ToList(),
+                Groups = _context.Groups.ToList(),
             };
 
             if (child == null)

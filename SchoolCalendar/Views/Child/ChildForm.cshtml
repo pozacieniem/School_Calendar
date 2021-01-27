@@ -15,15 +15,18 @@
     <div class="form-group">
         @Html.LabelFor(c => c.Child.BirthDate)
         @Html.TextBoxFor(c => c.Child.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Child.BirthDate, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(c => c.Child.Disability)
         @Html.TextBoxFor(c => c.Child.Disability, new { @class = "form-control" })
-    </div> <div class="form-group">
+    </div>
+    <div class="form-group">
         @Html.LabelFor(c => c.Child.DecisionNumber)
         @Html.TextBoxFor(c => c.Child.DecisionNumber, new { @class = "form-control" })
-    </div> <div class="form-group">
+    </div>
+    <div class="form-group">
         @Html.LabelFor(c => c.Child.OpinionNumber)
         @Html.TextBoxFor(c => c.Child.OpinionNumber, new { @class = "form-control" })
     </div>
@@ -33,7 +36,12 @@
         @Html.DropDownListFor(c => c.Child.SchoolId, new SelectList(Model.Schools, "Id", "Name"), "", new { @class = "form-control" })
     </div>
 
-    @Html.HiddenFor(c => c.Child.Id);
-    <button type="submit" class="btn btn-primary">Zapisz</button> @Html.ActionLink("Powrót", "Index", "Child", null, new { @class = "btn btn-primary" })
+    <div class="form-group">
+        @Html.LabelFor(c => c.Child.GroupId)
+        @Html.DropDownListFor(c => c.Child.GroupId, new SelectList(Model.Groups, "ID", "GroupName"), "", new { @class = "form-control" })
+    </div>
 
+    @Html.HiddenFor(c => c.Child.Id);
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    @Html.ActionLink("Powrót", "Index", "Child", null, new { @class = "btn btn-primary" })
 }

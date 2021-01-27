@@ -12,6 +12,9 @@ namespace SchoolCalendar.Models.CalendarModels
         [Display(Name = "Imie i nazwisko")]
         public string Name { get; set; }
 
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         [Display(Name = "Data urodzenia")]
         public DateTime? BirthDate { get; set; }
 
@@ -26,7 +29,14 @@ namespace SchoolCalendar.Models.CalendarModels
 
         public School School { get; set; }
 
+        [Required]
         [Display(Name = "Nazwa placówki")]
         public int SchoolId { get; set; }
+
+        [Required]
+        [Display(Name = "Grupa")]
+        public int GroupId { get; set; }
+
+        public Group Group { get; set; }
     }
 }

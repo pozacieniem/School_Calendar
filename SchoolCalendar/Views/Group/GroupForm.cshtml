@@ -1,0 +1,42 @@
+﻿@model SchoolCalendar.ViewModels.GroupFormViewModel
+@{
+    ViewBag.Title = "EmployeeForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nowy</h2>
+
+@using (Html.BeginForm("Save", "Employee"))
+{
+    @*<div class=" form-group">
+            @Html.LabelFor(m => m.Employee.Name)
+            @Html.TextBoxFor(m => m.Employee.Name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employee.SchoolId)
+            @Html.DropDownListFor(m => m.Employee.SchoolId, new SelectList(Model.Schools, "Id", "Name"), "", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employee.JobPosition.JobPositionName)
+            @Html.DropDownListFor(m => m.Employee.JobPositionId, new SelectList(Model.JobPositions, "Id", "JobPositionName"), "", new { @class = "form-control" })
+        </div>
+
+        @Html.HiddenFor(c => c.Employee.Id)
+        <button type="submit" class="btn btn-primary">Zapisz</button> @Html.ActionLink("Powrót", "Index", "Employee", null, new { @class = "btn btn-primary" })*@
+
+    @*<div class=" form-group">
+            @Html.LabelFor(m => m.Children.na
+            @Html.TextBoxFor(m => m.Employee.Name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employee.SchoolId)
+            @Html.DropDownListFor(m => m.Employee.SchoolId, new SelectList(Model.Schools, "Id", "Name"), "", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Employee.JobPosition.JobPositionName)
+            @Html.DropDownListFor(m => m.Employee.JobPositionId, new SelectList(Model.JobPositions, "Id", "JobPositionName"), "", new { @class = "form-control" })
+        </div>
+
+        @Html.HiddenFor(c => c.Employee.Id)
+        <button type="submit" class="btn btn-primary">Zapisz</button> @Html.ActionLink("Powrót", "Index", "Employee", null, new { @class = "btn btn-primary" })*@
+}

@@ -3,9 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Pracownicy</h2>
-
 <p>
     @Html.ActionLink("Nowy pracownik", "New", "Employee", null, new { @class = "btn btn-primary" })
 </p>
@@ -37,4 +35,5 @@ else
             }
         </tbody>
     </table>
+
 }

@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -167,13 +170,16 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Charts\TableInPdf.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SchoolCalendarControllers\CalendarEventController.cs" />
     <Compile Include="Controllers\SchoolCalendarControllers\ChildController.cs" />
     <Compile Include="Controllers\SchoolCalendarControllers\EmployeeController.cs" />
+    <Compile Include="Controllers\SchoolCalendarControllers\GroupController.cs" />
     <Compile Include="Controllers\SchoolCalendarControllers\JobPositionController.cs" />
+    <Compile Include="Controllers\SchoolCalendarControllers\ScheduleController.cs" />
     <Compile Include="Controllers\SchoolCalendarControllers\SchoolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,6 +236,34 @@
     <Compile Include="Migrations\201911181857582_PropAddedToChildTable.Designer.cs">
       <DependentUpon>201911181857582_PropAddedToChildTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001201938517_CalendarEventTableUpdated.cs" />
+    <Compile Include="Migrations\202001201938517_CalendarEventTableUpdated.Designer.cs">
+      <DependentUpon>202001201938517_CalendarEventTableUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001201940080_CalendarEventTableFix.cs" />
+    <Compile Include="Migrations\202001201940080_CalendarEventTableFix.Designer.cs">
+      <DependentUpon>202001201940080_CalendarEventTableFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012071915274_AddGroupPropToChildTable.cs" />
+    <Compile Include="Migrations\202012071915274_AddGroupPropToChildTable.Designer.cs">
+      <DependentUpon>202012071915274_AddGroupPropToChildTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012071955366_GroupsTableAdded.cs" />
+    <Compile Include="Migrations\202012071955366_GroupsTableAdded.Designer.cs">
+      <DependentUpon>202012071955366_GroupsTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012081813527_ManyModifications2.cs" />
+    <Compile Include="Migrations\202012081813527_ManyModifications2.Designer.cs">
+      <DependentUpon>202012081813527_ManyModifications2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012081829185_ManyModifications3.cs" />
+    <Compile Include="Migrations\202012081829185_ManyModifications3.Designer.cs">
+      <DependentUpon>202012081829185_ManyModifications3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012201716303_ChildTableUpdated.cs" />
+    <Compile Include="Migrations\202012201716303_ChildTableUpdated.Designer.cs">
+      <DependentUpon>202012201716303_ChildTableUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalendarModels\Child.cs" />
@@ -238,12 +272,14 @@
     <Compile Include="Models\CalendarModels\EmployeeAvailability.cs" />
     <Compile Include="Models\CalendarModels\JobPosition.cs" />
     <Compile Include="Models\CalendarModels\School.cs" />
+    <Compile Include="Models\CalendarModels\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\EmployeeFormViewModel.cs" />
     <Compile Include="ViewModels\ChildFormViewModel.cs" />
+    <Compile Include="ViewModels\GroupViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -490,9 +526,12 @@
     <Content Include="Views\School\SchoolForm.cshtml" />
     <Content Include="Views\JobPosition\Index.cshtml" />
     <Content Include="Views\JobPosition\JobPositionForm.cshtml" />
+    <Content Include="Views\Group\GroupForm.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Schedule\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -546,6 +585,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911181857582_PropAddedToChildTable.resx">
       <DependentUpon>201911181857582_PropAddedToChildTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001201938517_CalendarEventTableUpdated.resx">
+      <DependentUpon>202001201938517_CalendarEventTableUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001201940080_CalendarEventTableFix.resx">
+      <DependentUpon>202001201940080_CalendarEventTableFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012071915274_AddGroupPropToChildTable.resx">
+      <DependentUpon>202012071915274_AddGroupPropToChildTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012071955366_GroupsTableAdded.resx">
+      <DependentUpon>202012071955366_GroupsTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012081813527_ManyModifications2.resx">
+      <DependentUpon>202012081813527_ManyModifications2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012081829185_ManyModifications3.resx">
+      <DependentUpon>202012081829185_ManyModifications3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012201716303_ChildTableUpdated.resx">
+      <DependentUpon>202012201716303_ChildTableUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SchoolCalendar.Models.CalendarModels.Group>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Grupy</h2>
+<p>
+    @Html.ActionLink("Nowa grupa", "New", "Group", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (!Model.Any())
+{
+    <p>Nie dodano grupy</p>
+}
+else
+{
+    <table id="groups" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th style="text-align:center">Nazwa grupy</th>
+                @*<th style="text-align:center">Nazwa placówki</th>*@
+                <th style="text-align:center">Usuń</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var group in Model)
+            {
+                <tr>
+                    @*<td>@Html.ActionLink(group.GroupName, "Edit", "Group", new { id = group.ID }, null) </td>*@
+                    <td align="center">@group.GroupName</td>
+                    @*<td align="center">@group.</td>*@
+                    <td align="center">@Html.ActionLink("Usuń", "Delete", "Group", new { id = group.ID }, null) </td>
+                    @*<td>@Html.ActionLink(group.GroupName, "Edit", "Group", new { id = group.ID }, null) </td>
+                        <td align="center">@Html.ActionLink("Usuń", "Delete", "Employee", new { id = group.ID }, null) </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
